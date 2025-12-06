@@ -114,3 +114,17 @@ void useAttackItem(Character* character, Item* item)
         //dragons don't carry attack items!
     }
 }
+
+void restoreAndBoostStats(int& currentStat, std::unique_ptr<int>& initialStat, float boostFactor) 
+{
+    // a) your stats are restored to their initial value if they are lower than it.
+    if (currentStat < *initialStat)
+    {
+        currentStat = *initialStat;
+    }
+
+    // b) your stats are boosted by boostFactor
+    // c) the initial value of your stats is updated to reflect this boosted stat for the next time you defeat another character.
+    *initialStat = (*initialStat) * boostFactor;
+    currentStat = currentStat * boostFactor;
+}

@@ -15,3 +15,4 @@ std::string getCharacterStats(Character* ch);
 void useDefensiveItem(Character* ch, Item* item);
 void useHelpfulItem(Character* ch, Item* item);
 void useAttackItem(Character* ch, Item* item);
+void restoreAndBoostStats(int& currentStat, std::unique_ptr<int>& initialStat, float boostFactor);
