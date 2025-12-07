@@ -115,16 +115,17 @@ void useAttackItem(Character* character, Item* item)
     }
 }
 
-void restoreAndBoostStats(int& currentStat, std::unique_ptr<int>& initialStat, float boostFactor) 
+void restoreAndBoostStatsByTenPercent(int& currentStat, int& initialStat) 
 {
+    float boostFactor = 1.1f;
     // a) your stats are restored to their initial value if they are lower than it.
-    if (currentStat < *initialStat)
+    if (currentStat < initialStat)
     {
-        currentStat = *initialStat;
+        currentStat = initialStat;
     }
 
-    // b) your stats are boosted by boostFactor
+    // b) your stats are boosted 10%
     // c) the initial value of your stats is updated to reflect this boosted stat for the next time you defeat another character.
-    *initialStat = (*initialStat) * boostFactor;
+    initialStat = initialStat * boostFactor;
     currentStat = currentStat * boostFactor;
 }
